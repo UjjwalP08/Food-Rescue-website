@@ -1,46 +1,41 @@
 import { Avatar } from "antd";
 import logo from "../../assets/logo.png";
-import bg from "../../assets/bg.jpg";
+import { ROUTES } from "../../utils/route";
+import { useNavigate } from "react-router-dom";
+// import bg from "../../assets/bg.jpg";
 
 const Header = () => {
+  const navigate = useNavigate();
   const menuList = [
     {
       id: 1,
       title: "Home",
-      path: "/",
+      path: ROUTES.HOME,
     },
     {
       id: 2,
       title: "What We Do",
-      path: "/",
+      path: ROUTES.WHAT_WE_DO,
     },
     {
       id: 3,
       title: "Get Involved",
-      path: "/",
+      path: ROUTES.GET_INVOLVED,
     },
     {
       id: 4,
       title: "About Us",
-      path: "/",
+      path: ROUTES.ABOUT_US,
     },
     {
       id: 5,
       title: "Contact Us",
-      path: "/",
+      path: ROUTES.CONTACT_US,
     },
   ];
 
-  console.log(menuList);
   return (
     <div className="w-full h-screen overflow-hidden flex justify-center items-center">
-      <img
-        className="absolute top-0 left-0 object-cover w-full h-full pointer-events-none"
-        src={bg}
-        alt="backgroundImage"
-        // preview={false}
-      />
-
       <header
         style={{
           backgroundImage:
@@ -65,6 +60,9 @@ const Header = () => {
             {menuList.map((ele) => (
               <div
                 key={ele.id}
+                onClick={() => {
+                  navigate(ele.path);
+                }}
                 className="text-white text-lg py-2.5 cursor-pointer px-4 rounded-md transition font-medium hover:bg-white hover:text-black"
               >
                 {ele.title}
