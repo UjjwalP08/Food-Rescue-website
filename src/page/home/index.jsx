@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import bg from "../../assets/bg.jpg";
 import FoodManagement from "./FoodManagement";
 import FoodWaste from "./FoodWaste";
 import TogetherWeCan from "./TogetherWeCan";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="">
       {/* Container with relative positioning */}
@@ -23,6 +25,9 @@ const Home = () => {
           <button
             className="text-black  bg-white rounded-full px-6 py-4 text-2xl transition-all duration-300 hover:scale-110"
             type="button"
+            onClick={() => {
+              navigate("/donate");
+            }}
           >
             Donate Food!
           </button>
