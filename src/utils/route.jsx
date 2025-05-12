@@ -2,9 +2,9 @@ import { Navigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import AboutUs from "../page/about-us";
 import ContactUs from "../page/contact-us";
-import GetInvolved from "../page/get-involved";
 import Home from "../page/home";
 import WhatWeDo from "../page/what-we-do";
+import Donate from "../page/donate";
 
 export const ROUTES = {
   HOME: "/home",
@@ -12,6 +12,7 @@ export const ROUTES = {
   GET_INVOLVED: "/get-involved",
   ABOUT_US: "/about-us",
   CONTACT_US: "/contact-us",
+  DONATE: "/donate",
 };
 
 export const ALL_ROUTES = () => {
@@ -33,9 +34,13 @@ export const ALL_ROUTES = () => {
           element: <WhatWeDo />,
         },
         {
-          path: ROUTES.GET_INVOLVED,
-          element: <GetInvolved />,
+          path: ROUTES.DONATE,
+          element: <Donate />,
         },
+        // {
+        //   path: ROUTES.GET_INVOLVED,
+        //   element: <GetInvolved />,
+        // },
         {
           path: ROUTES.ABOUT_US,
           element: <AboutUs />,

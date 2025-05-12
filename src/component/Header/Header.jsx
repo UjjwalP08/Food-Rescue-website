@@ -12,26 +12,26 @@ const Header = () => {
       title: "Home",
       path: ROUTES.HOME,
     },
-    {
-      id: 2,
-      title: "What We Do",
-      path: ROUTES.WHAT_WE_DO,
-    },
+    // {
+    //   id: 2,
+    //   title: "What We Do",
+    //   path: ROUTES.WHAT_WE_DO,
+    // },
     {
       id: 3,
       title: "Donate",
-      path: ROUTES.GET_INVOLVED,
+      path: ROUTES.DONATE,
     },
-    {
-      id: 4,
-      title: "About Us",
-      path: ROUTES.ABOUT_US,
-    },
-    {
-      id: 5,
-      title: "Contact Us",
-      path: ROUTES.CONTACT_US,
-    },
+    // {
+    //   id: 4,
+    //   title: "About Us",
+    //   path: ROUTES.ABOUT_US,
+    // },
+    // {
+    //   id: 5,
+    //   title: "Contact Us",
+    //   path: ROUTES.CONTACT_US,
+    // },
   ];
   const currentPath = window.location.pathname;
 
