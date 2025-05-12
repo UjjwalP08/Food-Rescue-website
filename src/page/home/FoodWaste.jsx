@@ -1,3 +1,5 @@
+import foodWastImg1 from "../../assets/1.jpg";
+import foodWastImg2 from "../../assets/2.jpg";
 const FoodWaste = () => {
   const foodWasteCategories = [
     "Fruit and Vegetable waste",
@@ -30,6 +32,14 @@ const FoodWaste = () => {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-10">
+        <div>
+          <img src={foodWastImg1} alt="Food Waste" />
+        </div>
+        <div>
+          <img src={foodWastImg2} alt="Food Waste" />
         </div>
       </div>
       <div className="max-w-[70rem] mx-auto flex flex-col gap-10 items-center">
