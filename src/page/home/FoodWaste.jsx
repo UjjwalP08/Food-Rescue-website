@@ -34,7 +34,7 @@ const FoodWaste = () => {
       </div>
       <div className="max-w-[70rem] mx-auto flex flex-col gap-10 items-center">
         <p className="text-black text-4xl font-bold">
-          What is food waste management system??
+          What is Food Waste Management System??
         </p>
         <p className="text-center text-xl font-medium">
           Food waste management systems are designed to reduce the amount of
@@ -47,17 +47,18 @@ const FoodWaste = () => {
           collection systems that make it easier for businesses and households
           to separate and properly dispose of their food waste. Every day, food
           businesses throw out high-quality, delicious food. It could be pallets
-          of fresh bell peppers that aren’t the ideal shape. Or carrots that are
-          a little crooked. Or milk that was over-ordered for a local school
-          district. Point is, it’s food that could feed people rather than
-          ending up in a landfill. In India, the larger the marriage, the larger
-          the party, and also the additional stupendous the waste. No doubt
-          weddings and banquets are an enormous supply of food wastage, however,
-          restaurants and hotels conjointly contribute to food wastage. Nearly
-          14% of the total food produced globally is lost between the harvest
-          and retail stages. India&apos;s contribution to wasted food, at 68.8
-          million tonnes annually, is 7% of the global total, per the United
-          Nations Environment Programme&apos;s Food Waste Index Report 2021.
+          of fresh bell peppers that aren&apos;t the ideal shape. Or carrots
+          that are a little crooked. Or milk that was over-ordered for a local
+          school district. Point is, it&apos;s food that could feed people
+          rather than ending up in a landfill. In India, the larger the
+          marriage, the larger the party, and also the additional stupendous the
+          waste. No doubt weddings and banquets are an enormous supply of food
+          wastage, however, restaurants and hotels conjointly contribute to food
+          wastage. Nearly 14% of the total food produced globally is lost
+          between the harvest and retail stages. India&apos;s contribution to
+          wasted food, at 68.8 million tonnes annually, is 7% of the global
+          total, per the United Nations Environment Programme&apos;s Food Waste
+          Index Report 2021.
         </p>
         <p className="text-center text-xl font-medium">
           Here, <span className="text-[#2bb722] font-bold">FoodRescue</span>{" "}
@@ -70,16 +71,18 @@ const FoodWaste = () => {
         </p>
       </div>
       <div>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube-nocookie.com/embed/alljc5elqqw?si=bR8JWpFPl-XXHdSs"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
+        <div className="py-10">
+          <iframe
+            width="720"
+            height="415"
+            src="https://www.youtube-nocookie.com/embed/alljc5elqqw?si=bR8JWpFPl-XXHdSs"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </div>
   );

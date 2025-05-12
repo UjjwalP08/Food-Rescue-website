@@ -1,5 +1,7 @@
 import bg from "../../assets/bg.jpg";
+import FoodManagement from "./FoodManagement";
 import FoodWaste from "./FoodWaste";
+import TogetherWeCan from "./TogetherWeCan";
 
 const Home = () => {
   return (
@@ -35,6 +37,8 @@ const Home = () => {
       </div>
       <div className="p-4">
         <FoodWaste />
+        <FoodManagement />
+        <TogetherWeCan />
       </div>
     </div>
   );
