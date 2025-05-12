@@ -1,5 +1,5 @@
 import { Avatar } from "antd";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo2.png";
 import { ROUTES } from "../../utils/route";
 import { useNavigate } from "react-router-dom";
 // import bg from "../../assets/bg.jpg";
@@ -19,7 +19,7 @@ const Header = () => {
     },
     {
       id: 3,
-      title: "Get Involved",
+      title: "Donate",
       path: ROUTES.GET_INVOLVED,
     },
     {
@@ -33,15 +33,16 @@ const Header = () => {
       path: ROUTES.CONTACT_US,
     },
   ];
+  const currentPath = window.location.pathname;
 
   return (
-    <div className="w-full h-screen overflow-hidden flex justify-center items-center">
+    <div className="w-full  overflow-hidden flex justify-center items-center">
       <header
         style={{
           backgroundImage:
             "linear-gradient(rgba(1, 0, 5, 0.6),rgba(4, 1, 17, 0.6))",
         }}
-        className="relative z-10 w-full h-screen "
+        className="absolute  w-full h-[60px] top-0 z-[999]"
       >
         <nav
           style={{
@@ -63,7 +64,9 @@ const Header = () => {
                 onClick={() => {
                   navigate(ele.path);
                 }}
-                className="text-white text-lg py-2.5 cursor-pointer px-4 rounded-md transition font-medium hover:bg-white hover:text-black"
+                className={`text-white text-lg py-2.5 cursor-pointer px-4 rounded-md transition font-medium hover:bg-white hover:text-black ${
+                  currentPath === ele.path && "!bg-white !text-black"
+                }`}
               >
                 {ele.title}
               </div>

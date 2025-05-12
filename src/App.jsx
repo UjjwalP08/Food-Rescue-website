@@ -4,7 +4,6 @@ import { ALL_ROUTES } from "./utils/route";
 
 const App = () => {
   const router = createBrowserRouter(ALL_ROUTES());
-  console.log(ALL_ROUTES());
 
   return (
     <div className="">

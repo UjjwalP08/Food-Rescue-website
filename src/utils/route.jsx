@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import Layout from "../component/Layout/Layout";
+import Layout from "../Layout/Layout";
 import AboutUs from "../page/about-us";
 import ContactUs from "../page/contact-us";
 import GetInvolved from "../page/get-involved";
