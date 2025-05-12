@@ -52,9 +52,14 @@ const Header = () => {
           className="w-full fixed flex justify-between items-center px-16 shadow-lg"
         >
           {/* Logo */}
-          <div>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             <Avatar size={60} src={logo} alt="logo" />
-          </div>
+          </button>
 
           {/* Menu */}
           <div className="flex gap-2 items-center">

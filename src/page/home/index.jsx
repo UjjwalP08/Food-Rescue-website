@@ -1,8 +1,9 @@
 import bg from "../../assets/bg.jpg";
+import FoodWaste from "./FoodWaste";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       {/* Container with relative positioning */}
       <div className="relative h-screen">
         {/* Overlay div positioned absolutely over the image */}
@@ -31,6 +32,9 @@ const Home = () => {
           src={bg}
           alt="backgroundImage"
         />
+      </div>
+      <div className="p-4">
+        <FoodWaste />
       </div>
     </div>
   );
