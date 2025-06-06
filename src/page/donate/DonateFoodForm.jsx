@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const DonateFoodForm = () => {
   const [formData, setFormData] = useState({
@@ -12,8 +12,9 @@ const DonateFoodForm = () => {
     note: "",
     termsAccepted: false,
   });
-
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const dateRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -43,11 +44,52 @@ const DonateFoodForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const donateFood = async (data) => {
+    try {
+      const response = await fetch(
+        "https://notification-be-default-rtdb.europe-west1.firebasedatabase.app/donations.json",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const result = await response.json();
+      console.log("Donation submitted!", result);
+      alert("Thank you for donating food!");
+    } catch (error) {
+      console.error("Error submitting donation:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log("Form submitted:", formData);
-      // Handle actual submit logic here
+      setLoading(true); // Show spinner
+      try {
+        await donateFood(formData);
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          contact: "",
+          address: "",
+          category: "",
+          quantity: "",
+          prepTime: "",
+          note: "",
+          termsAccepted: false,
+        });
+        setErrors({});
+      } catch (err) {
+        console.error("Submission failed", err);
+      } finally {
+        setLoading(false); // Hide spinner
+      }
     }
   };
 
@@ -115,40 +157,22 @@ const DonateFoodForm = () => {
           )}
         </div>
 
-        {/* Food Category */}
+        {/* Category */}
         <div>
-          <p className="font-medium mb-1 text-white"> Category</p>
+          <p className="font-medium mb-1 text-white">Category</p>
           <div className="flex gap-4 text-white">
-            <label className="flex items-center gap-3">
-              <input
-                type="radio"
-                name="category"
-                value="veg"
-                checked={formData.category === "veg"}
-                onChange={handleChange}
-              />{" "}
-              Veg
-            </label>
-            <label className="flex items-center gap-3">
-              <input
-                type="radio"
-                name="category"
-                value="non-veg"
-                checked={formData.category === "non-veg"}
-                onChange={handleChange}
-              />{" "}
-              Non-Veg
-            </label>
-            <label className="flex items-center gap-3">
-              <input
-                type="radio"
-                name="category"
-                value="both"
-                checked={formData.category === "both"}
-                onChange={handleChange}
-              />{" "}
-              Both
-            </label>
+            {["veg", "non-veg", "both"].map((type) => (
+              <label key={type} className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="category"
+                  value={type}
+                  checked={formData.category === type}
+                  onChange={handleChange}
+                />{" "}
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </label>
+            ))}
           </div>
           {errors.category && (
             <p className="text-red-500 text-sm">{errors.category}</p>
@@ -172,12 +196,16 @@ const DonateFoodForm = () => {
           )}
         </div>
 
-        {/* Preparation Time */}
+        {/* Prep Time */}
         <div>
           <input
+            ref={dateRef}
             type="datetime-local"
             name="prepTime"
             value={formData.prepTime}
+            onClick={() => {
+              dateRef.current.showPicker();
+            }}
             onChange={handleChange}
             className="tw-border tw-border-gray-300 tw-p-2 tw-w-full tw-rounded tw-bg-[#191919] tw-text-white"
           />
@@ -199,7 +227,7 @@ const DonateFoodForm = () => {
         </div>
 
         {/* Terms */}
-        <div className=" text-white flex gap-2 items-center">
+        <div className="text-white flex gap-2 items-center">
           <input
             type="checkbox"
             name="termsAccepted"
@@ -215,9 +243,32 @@ const DonateFoodForm = () => {
         {/* Submit */}
         <button
           type="submit"
-          className="bg-green-600 text-white py-2 px-6 rounded hover:bg-green-700 transition"
+          className="bg-green-600 text-white py-2 px-6 rounded hover:bg-green-700 transition flex items-center justify-center gap-2"
+          disabled={loading}
         >
-          Submit
+          {loading && (
+            <svg
+              className="animate-spin h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              ></path>
+            </svg>
+          )}
+          {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>
