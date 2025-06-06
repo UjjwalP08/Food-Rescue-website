@@ -47,7 +47,7 @@ const DonateFoodForm = () => {
   const donateFood = async (data) => {
     try {
       const response = await fetch(
-        "https://notification-backend-a6eab-default-rtdb.firebaseio.com/",
+        "https://notification-backend-a6eab-default-rtdb.firebaseio.com/donations.json",
         {
           method: "POST",
           headers: {
