@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import axios from "axios";
 
 const DonateFoodForm = () => {
   const [formData, setFormData] = useState({
@@ -45,15 +46,25 @@ const DonateFoodForm = () => {
   };
 
   const donateFood = async (data) => {
+    console.log(data);
     try {
       const response = await fetch(
-        "https://notification-backend-a6eab-default-rtdb.firebaseio.com/donations.json",
+        import.meta.env.VITE_APP_BASE_URL + "admin/request",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data),
+          body: {
+            donorName: data?.name,
+            donarEmail: data?.email,
+            donarMobile: data?.contact,
+            pickUpAddress: data?.address,
+            foodCategory: data?.category,
+            foodQuantity: data?.quantity,
+            preparationDateTime: data?.prepTime,
+            note: data?.note,
+          },
         }
       );
 
