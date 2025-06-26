@@ -46,30 +46,28 @@ const DonateFoodForm = () => {
   };
 
   const donateFood = async (data) => {
-    console.log(data);
     try {
-      const response = await fetch(
+      const response = await axios.post(
         import.meta.env.VITE_APP_BASE_URL + "admin/request",
         {
-          method: "POST",
+          donorName: data?.name,
+          donarEmail: data?.email,
+          donarMobile: +data?.contact,
+          pickUpAddress: data?.address,
+          foodCategory: data?.category,
+          foodQuantity: +data?.quantity,
+          preparationDateTime: data?.prepTime,
+          note: data?.note,
+        },
+        {
           headers: {
             "Content-Type": "application/json",
-          },
-          body: {
-            donorName: data?.name,
-            donarEmail: data?.email,
-            donarMobile: data?.contact,
-            pickUpAddress: data?.address,
-            foodCategory: data?.category,
-            foodQuantity: data?.quantity,
-            preparationDateTime: data?.prepTime,
-            note: data?.note,
+            "Access-Control-Allow-Origin": "*",
           },
         }
       );
 
-      const result = await response.json();
-      console.log("Donation submitted!", result);
+      console.log("Donation submitted!", response.data);
       alert("Thank you for donating food!");
     } catch (error) {
       console.error("Error submitting donation:", error);
